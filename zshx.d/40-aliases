@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+
+# Aliases del usuario. Se carga automáticamente por estar en zshx.d/.

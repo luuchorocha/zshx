@@ -1,22 +1,35 @@
 #!/usr/bin/env zsh
 
-load() {
+zmodload zsh/datetime 2>/dev/null
+
+_zshx_load() {
   local modules_dir="$HOME/.config/zshx/zshx.d"
+  local -a skip_list only_list
+  skip_list=(${(s:,:)ZSHX_SKIP})
+  only_list=(${(s:,:)ZSHX_ONLY})
 
-  while [ $# -gt 0 ]; do
-    local current="$modules_dir/$1"
-    shift 1
+  local module name short
+  for module in "$modules_dir"/*(N.); do
+    name=${module:t}
+    short=${name#<->-}
 
-    if [ -e "$current" ]; then
-      . "$current" || true > /dev/null 2>&1
+    if (( ${#only_list} )) && (( ! ${only_list[(Ie)$short]} )); then
+      continue
+    fi
+    if (( ${skip_list[(Ie)$short]} )); then
+      continue
+    fi
+
+    if [[ -n $ZSHX_PROFILE ]]; then
+      local t0=$EPOCHREALTIME
+      source "$module" || print -ru2 "zshx: failed to source $name"
+      local t1=$EPOCHREALTIME
+      printf 'zshx: %-20s %6.2fms\n' "$short" "$(( (t1-t0)*1000 ))"
+    else
+      source "$module" || print -ru2 "zshx: failed to source $name"
     fi
   done
 }
 
-load	common \
-	colors \
-	history \
-	aliases \
-	prompt \
-	autocomplete
-
+_zshx_load
+unset -f _zshx_load

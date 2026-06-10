@@ -1,0 +1,22 @@
+#!/usr/bin/env zsh
+
+load() {
+  local modules_dir="$HOME/.config/zshx/zshx.d"
+
+  while [ $# -gt 0 ]; do
+    local current="$modules_dir/$1"
+    shift 1
+
+    if [ -e "$current" ]; then
+      . "$current" || true > /dev/null 2>&1
+    fi
+  done
+}
+
+load	common \
+	colors \
+	history \
+	aliases \
+	prompt \
+	autocomplete
+

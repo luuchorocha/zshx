@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+autoload -Uz promptinit
+promptinit
+
+PROMPT="%B%F{#999}%T%f %F{%(!.#7799dd.#00ffff)}%d%f"$'\n'"%F{%(?.#dadada.#ff5555)}%(!.#.$)%f%b » "
+RPROMPT="%F{#ff8800}%(?..%?)%f"

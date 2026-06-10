@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+zstyle ':completion:*' list-colors ${LS_COLORS}
+zstyle ':completion:*' menu select=1
+zstyle ':completion:*' verbose true
+zstyle ':completion:*' extra-verbose true
+
+autoload -Uz compinit
+compinit

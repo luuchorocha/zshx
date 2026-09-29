@@ -24,16 +24,32 @@ This repo is intentionally simple: there is no plugin manager, no opinionated fr
   - `50-prompt` — prompt configuration
   - `60-autocomplete` — completion setup
 
-## Install
+## Quick install
 
-1. Put this repository somewhere like:
+```sh
+curl -fsSL https://raw.githubusercontent.com/luuchorocha/zshx/refs/tags/v1.0.0/install.sh | sh -s --
+```
+
+That's it — your `.zshrc` will be symlinked to zshx and ready on the next `exec zsh`.
+
+To install to a custom directory:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/luuchorocha/zshx/refs/tags/v1.0.0/install.sh | sh -s -- --install-dir ~/my-zshx-config
+```
+
+### Manual install (alternative)
+
+If you prefer to clone manually:
+
+1. Clone into your config directory:
 
    ```sh
    mkdir -p ~/.config
    git clone <your-fork-or-repo-url> ~/.config/zshx
    ```
 
-2. Link the entry point into your shell startup:
+2. Link the entry point:
 
    ```sh
    ln -sf ~/.config/zshx/zshx ~/.zshrc
@@ -44,6 +60,14 @@ This repo is intentionally simple: there is no plugin manager, no opinionated fr
    ```sh
    exec zsh
    ```
+
+## Updating
+
+```sh
+cd ~/.config/zshx && git pull
+```
+
+The next time you start zsh (or run `source ~/.zshrc`), the latest modules will be loaded.
 
 ## Adding modules
 

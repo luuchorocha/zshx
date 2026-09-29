@@ -1,0 +1,27 @@
+#!/usr/bin/env zsh
+
+completions_dir="$HOME/.config/zshx/completions"
+
+# Load all sourceable files from the completions subdirectory
+if [[ -d "$completions_dir" ]]; then
+  # Use the same filtering logic as the main loader
+  local -a skip_list only_list
+  skip_list=(${(s:,:)ZSHX_SKIP})
+  only_list=(${(s:,:)ZSHX_ONLY})
+
+  for file in "$completions_dir"/*(N.); do
+    name=${file:t}
+    
+    # Skip if ONLY list is set and this isn't in it
+    if (( ${#only_list} )) && (( ! ${only_list[(Ie)$name]} )); then
+      continue
+    fi
+    
+    # Skip if this short name is in the skip list
+    if (( ${skip_list[(Ie)$name]} )); then
+      continue
+    fi
+    
+    source "$file" || print -ru2 "zshx: failed to source $name from completions"
+  done
+fi

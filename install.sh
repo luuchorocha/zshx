@@ -8,7 +8,7 @@ set -e
 
 # ── Constants (override via environment) ────────────────────────────────
 ZSHX_REPO="${ZSHX_REPO:-https://github.com/luuchorocha/zshx}"
-ZSHX_TAG="${ZSHX_TAG:-v1.0.0}"
+ZSHX_TAG="${ZSHX_TAG:-v1.0.1}"
 ZSHX_DEFAULT_DIR="${ZSHX_DEFAULT_DIR:-$HOME/.config/zshx}"
 
 # ── State variables ─────────────────────────────────────────────────────

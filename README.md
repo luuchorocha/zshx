@@ -27,7 +27,7 @@ This repo is intentionally simple: there is no plugin manager, no opinionated fr
 ## Quick install
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/luuchorocha/zshx/refs/tags/v1.0.0/install.sh | sh -s --
+curl -fsSL https://raw.githubusercontent.com/luuchorocha/zshx/refs/tags/v1.0.1/install.sh | sh -s --
 ```
 
 That's it — your `.zshrc` will be symlinked to zshx and ready on the next `exec zsh`.
@@ -35,7 +35,7 @@ That's it — your `.zshrc` will be symlinked to zshx and ready on the next `exe
 To install to a custom directory:
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/luuchorocha/zshx/refs/tags/v1.0.0/install.sh | sh -s -- --install-dir ~/my-zshx-config
+curl -fsSL https://raw.githubusercontent.com/luuchorocha/zshx/refs/tags/v1.0.1/install.sh | sh -s -- --install-dir ~/my-zshx-config
 ```
 
 ### Manual install (alternative)

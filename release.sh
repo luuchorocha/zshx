@@ -104,7 +104,7 @@ info "Updated $VERSION_FILE: $CURRENT_VERSION → $NEW_VERSION"
 # ── Update install.sh (ZSHX_TAG) ────────────────────────────────────────────
 
 if [ -f "install.sh" ]; then
-  sed -i "s/ZSHX_TAG=v${CURRENT_VERSION}/ZSHX_TAG=v${NEW_VERSION}/" install.sh
+  sed -i "s/ZSHX_TAG:-v${CURRENT_VERSION}/ZSHX_TAG:-v${NEW_VERSION}/" install.sh
   info "Updated install.sh ZSHX_TAG to $NEW_TAG"
 else
   warn "install.sh not found — skipping."

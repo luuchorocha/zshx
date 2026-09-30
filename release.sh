@@ -84,6 +84,9 @@ if [ "$DRY_RUN" = "1" ]; then
   info "New version     : $NEW_VERSION"
   info "Tag             : $NEW_TAG"
   info "Files to update : .VERSION, install.sh, README.md"
+  if git tag -l | grep -qx "$NEW_TAG"; then
+    warn "Tag '$NEW_TAG' already exists. It will NOT be overwritten (releases are immutable)."
+  fi
   exit 0
 fi
 
